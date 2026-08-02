@@ -710,13 +710,22 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  // ============ SUPABASE AYARLARI ============
+  // ============ SUPABASE AYARLARI (güvenli init) ============
   // Bu iki değeri kendi Supabase projenizden alın:
   // Supabase Dashboard > Project Settings > API
   const SUPABASE_URL = 'https://dpvkorhhokbrkzsmidvd.supabase.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_p8bdnkG2qp7LLM1QcQhL1g_xhzFR6fl';
 
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  let supabase = null;
+  try {
+    if (window.supabase && typeof window.supabase.createClient === 'function') {
+      supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    } else {
+      console.error('Supabase kütüphanesi yüklenemedi (CDN erişilemiyor olabilir).');
+    }
+  } catch (e) {
+    console.error('Supabase init hatası:', e);
+  }
 
   // Mobile menu toggle
   const menuBtn = document.getElementById('menuBtn');
@@ -821,26 +830,31 @@
     }
   }
 
-  // Sayfa açılışında mevcut oturumu kontrol et (gerçek kullanıcı bilgisiyle)
-  supabase.auth.getSession().then(({ data: { session } }) => {
-    applySessionToUI(session ? session.user : null);
-  });
+  if (supabase) {
+    // Sayfa açılışında mevcut oturumu kontrol et (gerçek kullanıcı bilgisiyle)
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      applySessionToUI(session ? session.user : null);
+    });
 
-  // Oturum değişimlerini dinle (giriş / çıkış / token yenileme)
-  supabase.auth.onAuthStateChange((event, session) => {
-    if (event === 'SIGNED_IN') {
-      applySessionToUI(session.user);
-      closeAuthModal();
-      showToast('Giriş yapıldı — hoş geldin, ' + getDisplayName(session.user).split(' ')[0] + '!');
-      if (pendingAction) { const action = pendingAction; pendingAction = null; action(); }
-    } else if (event === 'SIGNED_OUT') {
-      applySessionToUI(null);
-      accountDropdown.classList.add('hidden');
-      showToast('Çıkış yapıldı.');
-    }
-  });
+    // Oturum değişimlerini dinle (giriş / çıkış / token yenileme)
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN') {
+        applySessionToUI(session.user);
+        closeAuthModal();
+        showToast('Giriş yapıldı — hoş geldin, ' + getDisplayName(session.user).split(' ')[0] + '!');
+        if (pendingAction) { const action = pendingAction; pendingAction = null; action(); }
+      } else if (event === 'SIGNED_OUT') {
+        applySessionToUI(null);
+        accountDropdown.classList.add('hidden');
+        showToast('Çıkış yapıldı.');
+      }
+    });
+  } else {
+    showToast('Bağlantı hatası: Supabase yüklenemedi. Sayfayı yenileyin.');
+  }
 
   googleLoginBtn.addEventListener('click', async () => {
+    if (!supabase) { showToast('Bağlantı hatası: Supabase yüklenemedi.'); return; }
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: { redirectTo: window.location.href }
@@ -851,6 +865,7 @@
   });
 
   async function handleLogout(){
+    if (!supabase) return;
     await supabase.auth.signOut();
   }
   logoutBtn.addEventListener('click', handleLogout);
@@ -871,7 +886,7 @@
 
   // ============ SEPET (cart_items tablosuna bağlı) ============
   async function loadCartCount(){
-    if (!currentUser) return;
+    if (!currentUser || !supabase) return;
     const { count, error } = await supabase
       .from('cart_items')
       .select('id', { count: 'exact', head: true })
@@ -884,7 +899,7 @@
   }
 
   async function addToCart(slug, productName){
-    if (!currentUser) return;
+    if (!currentUser || !supabase) return;
 
     // Ürünü slug'a göre bul
     const { data: product, error: productError } = await supabase
@@ -974,7 +989,7 @@
   // İsim değişikliğini Supabase user_metadata'sına kaydeder (gerçek güncelleme)
   saveProfileBtn.addEventListener('click', async () => {
     const newName = profileNameInput.value.trim();
-    if (!newName || !currentUser) { closeProfileModal(); return; }
+    if (!newName || !currentUser || !supabase) { closeProfileModal(); return; }
 
     const { data, error } = await supabase.auth.updateUser({
       data: { full_name: newName }
