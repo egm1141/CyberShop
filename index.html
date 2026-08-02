@@ -728,18 +728,18 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabaseClient/supabase-js@2"></script>
 <script>
   // ============ SUPABASE AYARLARI (güvenli init) ============
   // Bu iki değeri kendi Supabase projenizden alın:
   // Supabase Dashboard > Project Settings > API
-  const SUPABASE_URL = 'https://hohqxtmzbpsgrdjvcroe.supabase.co';
+  const SUPABASE_URL = 'https://hohqxtmzbpsgrdjvcroe.supabaseClient.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_XjXpZwOcValdR6i6NdkbZw_C3G869Tu';
 
-  let supabase = null;
+  let supabaseClient = null;
   try {
     if (window.supabase && typeof window.supabase.createClient === 'function') {
-      supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     } else {
       console.error('Supabase kütüphanesi yüklenemedi (CDN erişilemiyor olabilir).');
     }
@@ -850,14 +850,14 @@
     }
   }
 
-  if (supabase) {
+  if (supabaseClient) {
     // Sayfa açılışında mevcut oturumu kontrol et (gerçek kullanıcı bilgisiyle)
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabaseClient.auth.getSession().then(({ data: { session } }) => {
       applySessionToUI(session ? session.user : null);
     });
 
     // Oturum değişimlerini dinle (giriş / çıkış / token yenileme)
-    supabase.auth.onAuthStateChange((event, session) => {
+    supabaseClient.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN') {
         applySessionToUI(session.user);
         closeAuthModal();
@@ -874,8 +874,8 @@
   }
 
   googleLoginBtn.addEventListener('click', async () => {
-    if (!supabase) { showToast('Bağlantı hatası: Supabase yüklenemedi.'); return; }
-    const { error } = await supabase.auth.signInWithOAuth({
+    if (!supabaseClient) { showToast('Bağlantı hatası: Supabase yüklenemedi.'); return; }
+    const { error } = await supabaseClient.auth.signInWithOAuth({
       provider: 'google',
       options: { redirectTo: window.location.href }
     });
@@ -885,8 +885,8 @@
   });
 
   async function handleLogout(){
-    if (!supabase) return;
-    await supabase.auth.signOut();
+    if (!supabaseClient) return;
+    await supabaseClient.auth.signOut();
   }
   logoutBtn.addEventListener('click', handleLogout);
   logoutBtnMobile.addEventListener('click', handleLogout);
@@ -906,8 +906,8 @@
 
   // ============ SEPET (cart_items tablosuna bağlı) ============
   async function loadCartCount(){
-    if (!currentUser || !supabase) return;
-    const { count, error } = await supabase
+    if (!currentUser || !supabaseClient) return;
+    const { count, error } = await supabaseClient
       .from('cart_items')
       .select('id', { count: 'exact', head: true })
       .eq('user_id', currentUser.id);
@@ -919,10 +919,10 @@
   }
 
   async function addToCart(slug, productName){
-    if (!currentUser || !supabase) return;
+    if (!currentUser || !supabaseClient) return;
 
     // Ürünü slug'a göre bul
-    const { data: product, error: productError } = await supabase
+    const { data: product, error: productError } = await supabaseClient
       .from('products')
       .select('id')
       .eq('slug', slug)
@@ -934,7 +934,7 @@
     }
 
     // cart_items'a ekle (aynı üründen varsa quantity artır)
-    const { data: existing } = await supabase
+    const { data: existing } = await supabaseClient
       .from('cart_items')
       .select('id, quantity')
       .eq('user_id', currentUser.id)
@@ -942,12 +942,12 @@
       .maybeSingle();
 
     if (existing) {
-      await supabase
+      await supabaseClient
         .from('cart_items')
         .update({ quantity: existing.quantity + 1 })
         .eq('id', existing.id);
     } else {
-      await supabase
+      await supabaseClient
         .from('cart_items')
         .insert({ user_id: currentUser.id, product_id: product.id, quantity: 1 });
     }
@@ -1009,9 +1009,9 @@
   // İsim değişikliğini Supabase user_metadata'sına kaydeder (gerçek güncelleme)
   saveProfileBtn.addEventListener('click', async () => {
     const newName = profileNameInput.value.trim();
-    if (!newName || !currentUser || !supabase) { closeProfileModal(); return; }
+    if (!newName || !currentUser || !supabaseClient) { closeProfileModal(); return; }
 
-    const { data, error } = await supabase.auth.updateUser({
+    const { data, error } = await supabaseClient.auth.updateUser({
       data: { full_name: newName }
     });
 
