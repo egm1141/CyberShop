@@ -166,7 +166,7 @@
       <div id="userActions" class="hidden relative">
         <button id="accountBtn" class="flex items-center gap-2 border border-white/15 hover:border-[color:var(--neon-blue)]/50 rounded-full pl-3 pr-2 py-1.5 text-sm text-white transition-colors">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
-          <span id="userNameLabel">Egemen</span>
+          <span id="userNameLabel">Kullanıcı</span>
           <svg id="accountChevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s ease"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
 
@@ -213,7 +213,7 @@
         <a href="#courses" class="block glow-btn text-[#0b1220] text-sm font-semibold px-5 py-2.5 rounded-full text-center">Alışverişe Başla</a>
       </div>
       <div id="userActionsMobile" class="hidden space-y-1">
-        <p id="userNameLabelMobile" class="text-[10px] text-[color:var(--text-low)] font-mono px-1 mb-2 tracking-widest">EGEMEN</p>
+        <p id="userNameLabelMobile" class="text-[10px] text-[color:var(--text-low)] font-mono px-1 mb-2 tracking-widest">KULLANICI</p>
         <a href="#" class="profile-link block px-1 py-1.5 hover:text-white">Profilim</a>
         <a href="#" class="block px-1 py-1.5 hover:text-white">Siparişlerim</a>
         <a href="#" class="block px-1 py-1.5 hover:text-white">Kurslarım</a>
@@ -351,7 +351,7 @@
           </div>
           <div class="flex items-center justify-between">
             <span class="font-mono font-semibold text-lg">₺149</span>
-            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-product="Siber Güvenliğe Giriş">Sepete Ekle</button>
+            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-slug="siber-guvenlige-giris" data-product="Siber Güvenliğe Giriş">Sepete Ekle</button>
           </div>
         </div>
       </article>
@@ -371,7 +371,7 @@
           </div>
           <div class="flex items-center justify-between">
             <span class="font-mono font-semibold text-lg">₺199</span>
-            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-product="Python ile Veri Bilimi">Sepete Ekle</button>
+            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-slug="python-ile-veri-bilimi" data-product="Python ile Veri Bilimi">Sepete Ekle</button>
           </div>
         </div>
       </article>
@@ -391,7 +391,7 @@
           </div>
           <div class="flex items-center justify-between">
             <span class="font-mono font-semibold text-lg">₺129</span>
-            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-product="Modern Arayüz Tasarımı">Sepete Ekle</button>
+            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-slug="modern-arayuz-tasarimi" data-product="Modern Arayüz Tasarımı">Sepete Ekle</button>
           </div>
         </div>
       </article>
@@ -411,7 +411,7 @@
           </div>
           <div class="flex items-center justify-between">
             <span class="font-mono font-semibold text-lg">₺179</span>
-            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-product="Yapay Zeka Temelleri">Sepete Ekle</button>
+            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-slug="yapay-zeka-temelleri" data-product="Yapay Zeka Temelleri">Sepete Ekle</button>
           </div>
         </div>
       </article>
@@ -447,7 +447,7 @@
           </div>
           <div class="flex items-center justify-between">
             <span class="font-mono font-semibold text-lg">₺349</span>
-            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-product="Etik Hackerlık Sıfırdan Zirveye">Kursa Katıl</button>
+            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-slug="etik-hackerlik" data-product="Etik Hackerlık Sıfırdan Zirveye">Kursa Katıl</button>
           </div>
         </div>
       </article>
@@ -466,7 +466,7 @@
           </div>
           <div class="flex items-center justify-between">
             <span class="font-mono font-semibold text-lg">₺299</span>
-            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-product="React ile Modern Web Geliştirme">Kursa Katıl</button>
+            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-slug="react-modern-web" data-product="React ile Modern Web Geliştirme">Kursa Katıl</button>
           </div>
         </div>
       </article>
@@ -485,7 +485,7 @@
           </div>
           <div class="flex items-center justify-between">
             <span class="font-mono font-semibold text-lg">₺399</span>
-            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-product="Bulut Mimarisi ve DevOps">Kursa Katıl</button>
+            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-slug="bulut-mimarisi-devops" data-product="Bulut Mimarisi ve DevOps">Kursa Katıl</button>
           </div>
         </div>
       </article>
@@ -661,27 +661,27 @@
     </button>
 
     <div class="flex items-center gap-4 mb-8">
-      <div id="profileAvatarInitial" class="w-16 h-16 flex-shrink-0 rounded-full flex items-center justify-center font-display font-700 text-xl bg-gradient-to-br from-[color:var(--neon-blue)]/20 to-[color:var(--neon-purple)]/20 text-[color:var(--neon-blue)] border border-white/10">E</div>
+      <div id="profileAvatarInitial" class="w-16 h-16 flex-shrink-0 rounded-full flex items-center justify-center font-display font-700 text-xl bg-gradient-to-br from-[color:var(--neon-blue)]/20 to-[color:var(--neon-purple)]/20 text-[color:var(--neon-blue)] border border-white/10">?</div>
       <div>
         <div class="flex items-center gap-2 flex-wrap">
-          <h3 id="profileDisplayName" class="font-semibold text-lg">Egemen Yılmaz</h3>
+          <h3 id="profileDisplayName" class="font-semibold text-lg">—</h3>
           <span class="font-mono text-[9px] bg-emerald-500/15 text-emerald-400 px-1.5 py-0.5 rounded">DOĞRULANMIŞ</span>
         </div>
-        <p class="text-xs text-[color:var(--text-low)] font-mono">Üyelik: Ağustos 2026</p>
+        <p id="profileJoinDate" class="text-xs text-[color:var(--text-low)] font-mono">Üyelik: —</p>
       </div>
     </div>
 
     <div class="grid grid-cols-3 gap-3 mb-8">
       <div class="card-surface rounded-xl p-4 text-center">
-        <p class="font-display font-700 text-xl text-[color:var(--neon-blue)]">3</p>
+        <p id="statOrders" class="font-display font-700 text-xl text-[color:var(--neon-blue)]">0</p>
         <p class="text-[11px] text-[color:var(--text-low)] mt-1">Sipariş</p>
       </div>
       <div class="card-surface rounded-xl p-4 text-center">
-        <p class="font-display font-700 text-xl text-[color:var(--neon-purple)]">2</p>
+        <p id="statCourses" class="font-display font-700 text-xl text-[color:var(--neon-purple)]">0</p>
         <p class="text-[11px] text-[color:var(--text-low)] mt-1">Aktif Kurs</p>
       </div>
       <div class="card-surface rounded-xl p-4 text-center">
-        <p class="font-display font-700 text-xl text-[color:var(--neon-blue)]">5</p>
+        <p id="statFavorites" class="font-display font-700 text-xl text-[color:var(--neon-blue)]">0</p>
         <p class="text-[11px] text-[color:var(--text-low)] mt-1">Favori</p>
       </div>
     </div>
@@ -689,15 +689,15 @@
     <div class="space-y-4">
       <div>
         <label class="block text-xs font-mono text-[color:var(--text-low)] tracking-widest mb-2">AD SOYAD</label>
-        <input id="profileNameInput" type="text" value="Egemen Yılmaz" class="w-full bg-[#0b1220] border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[color:var(--neon-blue)]/60">
+        <input id="profileNameInput" type="text" value="" class="w-full bg-[#0b1220] border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[color:var(--neon-blue)]/60">
       </div>
       <div>
         <label class="block text-xs font-mono text-[color:var(--text-low)] tracking-widest mb-2">E-POSTA</label>
-        <input id="profileEmailInput" type="email" value="egemen@gmail.com" class="w-full bg-[#0b1220] border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[color:var(--neon-blue)]/60">
+        <input id="profileEmailInput" type="email" value="" disabled class="w-full bg-[#0b1220] border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white/60 cursor-not-allowed focus:outline-none">
       </div>
       <div>
         <label class="block text-xs font-mono text-[color:var(--text-low)] tracking-widest mb-2">TELEFON</label>
-        <input id="profilePhoneInput" type="tel" value="+90 5xx xxx xx xx" class="w-full bg-[#0b1220] border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[color:var(--neon-blue)]/60">
+        <input id="profilePhoneInput" type="tel" value="" placeholder="+90 5xx xxx xx xx" class="w-full bg-[#0b1220] border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[color:var(--neon-blue)]/60">
       </div>
     </div>
 
@@ -708,7 +708,16 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  // ============ SUPABASE AYARLARI ============
+  // Bu iki değeri kendi Supabase projenizden alın:
+  // Supabase Dashboard > Project Settings > API
+  const SUPABASE_URL = 'https://dpvkorhhokbrkzsmidvd.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_p8bdnkG2qp7LLM1QcQhL1g_xhzFR6fl';
+
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
   // Mobile menu toggle
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -742,8 +751,8 @@
     });
   });
 
-  // ---- Giriş / sepet durum yönetimi ----
-  let isLoggedIn = false;
+  // ============ GİRİŞ / SEPET DURUM YÖNETİMİ (GERÇEK SUPABASE AUTH) ============
+  let currentUser = null; // Supabase auth kullanıcısı
   let cartCount = 0;
   let pendingAction = null;
 
@@ -767,6 +776,9 @@
   const toast = document.getElementById('toast');
   const toastMsg = document.getElementById('toastMsg');
 
+  const userNameLabel = document.getElementById('userNameLabel');
+  const userNameLabelMobile = document.getElementById('userNameLabelMobile');
+
   function showToast(msg){
     toastMsg.textContent = msg;
     toast.classList.remove('hidden');
@@ -780,27 +792,66 @@
   authOverlay.addEventListener('click', closeAuthModal);
   cancelAuthBtn.addEventListener('click', closeAuthModal);
 
-  function setLoggedIn(state){
-    isLoggedIn = state;
-    guestActions.classList.toggle('hidden', state);
-    userActions.classList.toggle('hidden', !state);
-    guestActionsMobile.classList.toggle('hidden', state);
-    userActionsMobile.classList.toggle('hidden', !state);
+  // Kullanıcı adını Supabase user_metadata'sından çıkarır (Google'dan gelen gerçek isim)
+  function getDisplayName(user){
+    const meta = user.user_metadata || {};
+    return meta.full_name || meta.name || (user.email ? user.email.split('@')[0] : 'Kullanıcı');
   }
 
-  googleLoginBtn.addEventListener('click', () => {
-    const action = pendingAction;
-    pendingAction = null;
-    setLoggedIn(true);
-    closeAuthModal();
-    showToast('Giriş yapıldı — hoş geldin, Egemen!');
-    if (action) { action(); }
+  // UI'yı gerçek oturum bilgisiyle günceller
+  function applySessionToUI(user){
+    currentUser = user;
+    const loggedIn = !!user;
+
+    guestActions.classList.toggle('hidden', loggedIn);
+    userActions.classList.toggle('hidden', !loggedIn);
+    guestActionsMobile.classList.toggle('hidden', loggedIn);
+    userActionsMobile.classList.toggle('hidden', !loggedIn);
+
+    if (loggedIn) {
+      const displayName = getDisplayName(user);
+      const firstName = displayName.split(' ')[0];
+      userNameLabel.textContent = firstName;
+      if (userNameLabelMobile) userNameLabelMobile.textContent = displayName.toUpperCase();
+      fillProfileModal(user);
+      loadCartCount();
+    } else {
+      cartCount = 0;
+      cartBadge.classList.add('hidden');
+    }
+  }
+
+  // Sayfa açılışında mevcut oturumu kontrol et (gerçek kullanıcı bilgisiyle)
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    applySessionToUI(session ? session.user : null);
   });
 
-  function handleLogout(){
-    setLoggedIn(false);
-    accountDropdown.classList.add('hidden');
-    showToast('Çıkış yapıldı.');
+  // Oturum değişimlerini dinle (giriş / çıkış / token yenileme)
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'SIGNED_IN') {
+      applySessionToUI(session.user);
+      closeAuthModal();
+      showToast('Giriş yapıldı — hoş geldin, ' + getDisplayName(session.user).split(' ')[0] + '!');
+      if (pendingAction) { const action = pendingAction; pendingAction = null; action(); }
+    } else if (event === 'SIGNED_OUT') {
+      applySessionToUI(null);
+      accountDropdown.classList.add('hidden');
+      showToast('Çıkış yapıldı.');
+    }
+  });
+
+  googleLoginBtn.addEventListener('click', async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.href }
+    });
+    if (error) showToast('Giriş başarısız: ' + error.message);
+    // Not: OAuth yönlendirmesi sayfayı Google'a taşır, dönüşte
+    // onAuthStateChange (SIGNED_IN) tetiklenir.
+  });
+
+  async function handleLogout(){
+    await supabase.auth.signOut();
   }
   logoutBtn.addEventListener('click', handleLogout);
   logoutBtnMobile.addEventListener('click', handleLogout);
@@ -818,35 +869,92 @@
     }
   });
 
-  function addToCart(productName){
-    cartCount++;
-    cartBadge.textContent = cartCount;
-    cartBadge.classList.remove('hidden');
+  // ============ SEPET (cart_items tablosuna bağlı) ============
+  async function loadCartCount(){
+    if (!currentUser) return;
+    const { count, error } = await supabase
+      .from('cart_items')
+      .select('id', { count: 'exact', head: true })
+      .eq('user_id', currentUser.id);
+    if (!error) {
+      cartCount = count || 0;
+      cartBadge.textContent = cartCount;
+      cartBadge.classList.toggle('hidden', cartCount === 0);
+    }
+  }
+
+  async function addToCart(slug, productName){
+    if (!currentUser) return;
+
+    // Ürünü slug'a göre bul
+    const { data: product, error: productError } = await supabase
+      .from('products')
+      .select('id')
+      .eq('slug', slug)
+      .single();
+
+    if (productError || !product) {
+      showToast('Ürün bulunamadı.');
+      return;
+    }
+
+    // cart_items'a ekle (aynı üründen varsa quantity artır)
+    const { data: existing } = await supabase
+      .from('cart_items')
+      .select('id, quantity')
+      .eq('user_id', currentUser.id)
+      .eq('product_id', product.id)
+      .maybeSingle();
+
+    if (existing) {
+      await supabase
+        .from('cart_items')
+        .update({ quantity: existing.quantity + 1 })
+        .eq('id', existing.id);
+    } else {
+      await supabase
+        .from('cart_items')
+        .insert({ user_id: currentUser.id, product_id: product.id, quantity: 1 });
+    }
+
     showToast('"' + productName + '" sepete eklendi.');
+    loadCartCount();
   }
 
   document.querySelectorAll('.add-cart-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      const slug = btn.getAttribute('data-slug');
       const productName = btn.getAttribute('data-product');
-      if (!isLoggedIn) {
-        pendingAction = () => addToCart(productName);
+      if (!currentUser) {
+        pendingAction = () => addToCart(slug, productName);
         openAuthModal();
       } else {
-        addToCart(productName);
+        addToCart(slug, productName);
       }
     });
   });
 
-  // ---- Profil modalı ----
+  // ============ PROFİL MODALI (gerçek kullanıcı verisiyle) ============
   const profileModal = document.getElementById('profileModal');
   const profileOverlay = document.getElementById('profileOverlay');
   const closeProfileBtn = document.getElementById('closeProfileBtn');
   const cancelProfileBtn = document.getElementById('cancelProfileBtn');
   const saveProfileBtn = document.getElementById('saveProfileBtn');
   const profileNameInput = document.getElementById('profileNameInput');
+  const profileEmailInput = document.getElementById('profileEmailInput');
   const profileDisplayName = document.getElementById('profileDisplayName');
   const profileAvatarInitial = document.getElementById('profileAvatarInitial');
-  const userNameLabelMobile = document.getElementById('userNameLabelMobile');
+  const profileJoinDate = document.getElementById('profileJoinDate');
+
+  function fillProfileModal(user){
+    const displayName = getDisplayName(user);
+    profileDisplayName.textContent = displayName;
+    profileAvatarInitial.textContent = displayName.charAt(0).toUpperCase();
+    profileNameInput.value = displayName;
+    profileEmailInput.value = user.email || '';
+    const joinDate = user.created_at ? new Date(user.created_at).toLocaleDateString('tr-TR', { year: 'numeric', month: 'long' }) : '—';
+    profileJoinDate.textContent = 'Üyelik: ' + joinDate;
+  }
 
   function openProfileModal(){
     accountDropdown.classList.add('hidden');
@@ -857,19 +965,27 @@
   function closeProfileModal(){ profileModal.classList.add('hidden'); }
 
   document.querySelectorAll('.profile-link').forEach(el => {
-    el.addEventListener('click', (e) => { e.preventDefault(); openProfileModal(); });
+    el.addEventListener('click', (e) => { e.preventDefault(); if (currentUser) openProfileModal(); else openAuthModal(); });
   });
   profileOverlay.addEventListener('click', closeProfileModal);
   closeProfileBtn.addEventListener('click', closeProfileModal);
   cancelProfileBtn.addEventListener('click', closeProfileModal);
 
-  saveProfileBtn.addEventListener('click', () => {
-    const newName = profileNameInput.value.trim() || 'Egemen';
-    const firstName = newName.split(' ')[0];
-    profileDisplayName.textContent = newName;
-    profileAvatarInitial.textContent = firstName.charAt(0).toUpperCase();
-    userNameLabel.textContent = firstName;
-    if (userNameLabelMobile) userNameLabelMobile.textContent = firstName.toUpperCase();
+  // İsim değişikliğini Supabase user_metadata'sına kaydeder (gerçek güncelleme)
+  saveProfileBtn.addEventListener('click', async () => {
+    const newName = profileNameInput.value.trim();
+    if (!newName || !currentUser) { closeProfileModal(); return; }
+
+    const { data, error } = await supabase.auth.updateUser({
+      data: { full_name: newName }
+    });
+
+    if (error) {
+      showToast('Güncelleme başarısız: ' + error.message);
+      return;
+    }
+
+    applySessionToUI(data.user);
     closeProfileModal();
     showToast('Profil bilgilerin güncellendi.');
   });
