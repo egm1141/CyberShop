@@ -3,7 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CyberShop — Dijital Ürünler Mağazası</title>
+<title>CyberShop — E-Kitap ve Video Kurs Satın Al | Anında Dijital Teslimat</title>
+<meta name="description" content="CyberShop'ta e-ticaret, yazılım, siber güvenlik ve bulut mimarisi üzerine e-kitap ve video kurslar satın alın. Satın alma sonrası anında dijital teslimat, ömür boyu erişim ve 14 gün koşulsuz iade garantisi.">
+<meta name="keywords" content="e-kitap satın al, video kurs, online eğitim, etik hackerlık kursu, react kursu, devops kursu, dijital ürün, e-ticaret rehberi">
+<meta name="robots" content="index, follow">
+<meta name="author" content="CyberShop">
+<link rel="canonical" href="https://www.cybershop.com/">
+
+<!-- Open Graph / Facebook, WhatsApp, LinkedIn önizlemesi -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.cybershop.com/">
+<meta property="og:site_name" content="CyberShop">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="CyberShop — E-Kitap ve Video Kurs Satın Al">
+<meta property="og:description" content="Uzman yazarlardan e-kitaplar, sektör profesyonellerinden video kurslar. Saniyeler içinde teslim, ömür boyu erişim.">
+<meta property="og:image" content="https://www.cybershop.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CyberShop — E-Kitap ve Video Kurs Satın Al">
+<meta name="twitter:description" content="Uzman yazarlardan e-kitaplar, sektör profesyonellerinden video kurslar. Saniyeler içinde teslim, ömür boyu erişim.">
+<meta name="twitter:image" content="https://www.cybershop.com/og-image.jpg">
+
+<meta name="theme-color" content="#0f172a">
+
+<!-- Yapılandırılmış veri: Organizasyon + Web Sitesi -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OnlineStore",
+  "name": "CyberShop",
+  "url": "https://www.cybershop.com/",
+  "description": "E-kitap ve video kurs satan dijital ürünler mağazası.",
+  "sameAs": []
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "CyberShop",
+  "url": "https://www.cybershop.com/"
+}
+</script>
+<!-- Statik video kurs ürünleri için yapılandırılmış veri (Google'da yıldız/fiyat gösterimi için) -->
+<script type="application/ld+json" id="ld-static-products">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Course",
+        "name": "Etik Hackerlık Sıfırdan Zirveye",
+        "description": "Sıfırdan başlayanlar için hazırlanmış etik hackerlık video kursu, 42 modül.",
+        "provider": { "@type": "Organization", "name": "CyberShop", "sameAs": "https://www.cybershop.com/" },
+        "offers": { "@type": "Offer", "price": "349", "priceCurrency": "TRY", "availability": "https://schema.org/InStock" },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1204" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Course",
+        "name": "React ile Modern Web Geliştirme",
+        "description": "React ile modern web geliştirme video kursu, 36 modül.",
+        "provider": { "@type": "Organization", "name": "CyberShop", "sameAs": "https://www.cybershop.com/" },
+        "offers": { "@type": "Offer", "price": "299", "priceCurrency": "TRY", "availability": "https://schema.org/InStock" },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "876" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Course",
+        "name": "Bulut Mimarisi ve DevOps",
+        "description": "Bulut mimarisi ve DevOps video kursu, 51 modül.",
+        "provider": { "@type": "Organization", "name": "CyberShop", "sameAs": "https://www.cybershop.com/" },
+        "offers": { "@type": "Offer", "price": "399", "priceCurrency": "TRY", "availability": "https://schema.org/InStock" },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "632" }
+      }
+    }
+  ]
+}
+</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -30,7 +119,6 @@
   .font-display{font-family:'Orbitron',sans-serif;}
   .font-mono{font-family:'JetBrains Mono',monospace;}
 
-  /* ---- Circuit grid backdrop ---- */
   .circuit-bg{
     position:absolute; inset:0;
     background-image:
@@ -43,7 +131,6 @@
     position:absolute; border-radius:50%; filter:blur(90px); opacity:.35; pointer-events:none;
   }
 
-  /* ---- Glitch hero title ---- */
   .glitch-wrap{ position:relative; display:inline-block; }
   .glitch{
     position:relative;
@@ -87,7 +174,6 @@
   .blink{ animation: blink 1.1s steps(2) infinite; }
   @keyframes blink{ 50%{ opacity:0; } }
 
-  /* ---- Neon utilities ---- */
   .text-gradient{
     background:linear-gradient(90deg,var(--neon-blue),var(--neon-purple));
     -webkit-background-clip:text; background-clip:text; color:transparent;
@@ -104,7 +190,6 @@
   }
   .glow-btn:hover{ box-shadow:0 0 28px rgba(34,226,255,.35), 0 0 44px rgba(180,91,255,.25); transform:translateY(-2px); }
 
-  /* ---- 3D tilt category cards ---- */
   .tilt-card{
     transform-style:preserve-3d;
     transition:transform .15s ease-out, box-shadow .3s ease;
@@ -113,15 +198,12 @@
   .tilt-card .tilt-inner{ transform:translateZ(30px); }
   .tilt-card:hover{ box-shadow:0 20px 50px -12px rgba(34,226,255,.18); }
 
-  /* ---- Reveal on scroll ---- */
   .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
   .reveal.in{ opacity:1; transform:translateY(0); }
 
-  /* ---- Star rating ---- */
   .stars{ letter-spacing:2px; color:var(--text-low); font-size:1rem; }
   .stars .filled{ color:var(--neon-blue); }
 
-  /* ---- Favorite heart button ---- */
   .fav-btn{
     z-index:5;
     background:rgba(11,18,32,.55);
@@ -134,9 +216,21 @@
   .fav-btn:hover{ transform:scale(1.08); background:rgba(11,18,32,.8); }
   .fav-btn.is-fav{ color:var(--neon-purple); }
 
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
   ::-webkit-scrollbar{ width:10px; }
   ::-webkit-scrollbar-track{ background:var(--bg); }
   ::-webkit-scrollbar-thumb{ background:var(--bg-elevated); border-radius:6px; }
+
+  /* Yeni eklenen ürün kartı için kısa vurgu animasyonu */
+  @keyframes newItemPulse{
+    0%{ box-shadow:0 0 0 2px var(--neon-blue), 0 0 40px rgba(34,226,255,.55); }
+    100%{ box-shadow:0 0 0 0 rgba(34,226,255,0); }
+  }
+  .just-added{ animation: newItemPulse 2.2s ease-out; }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation:none !important; transition:none !important; }
@@ -171,12 +265,10 @@
         <span id="cartBadge" class="hidden absolute -top-2 -right-2 w-4 h-4 rounded-full bg-[color:var(--neon-blue)] text-[#0b1220] text-[10px] font-bold flex items-center justify-center">0</span>
       </button>
 
-      <!-- Misafir durumu -->
       <div id="guestActions">
         <button id="topLoginBtn" class="glow-btn text-[#0b1220] text-sm font-semibold px-5 py-2.5 rounded-full">Giriş Yap</button>
       </div>
 
-      <!-- Üye durumu -->
       <div id="userActions" class="hidden relative">
         <button id="accountBtn" class="flex items-center gap-2 border border-white/15 hover:border-[color:var(--neon-blue)]/50 rounded-full pl-3 pr-2 py-1.5 text-sm text-white transition-colors">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
@@ -258,7 +350,8 @@
     <div class="relative">
       <div class="scanline"></div>
       <h1 class="glitch-wrap">
-        <span class="glitch font-display font-900 text-[15vw] md:text-[7.5rem] leading-none" data-text="CYBERSHOP">CYBERSHOP</span>
+        <span class="glitch font-display font-900 text-[15vw] md:text-[7.5rem] leading-none" data-text="CYBERSHOP" aria-hidden="true">CYBERSHOP</span>
+        <span class="sr-only">CyberShop — E-Kitap ve Video Kurs Satın Al, Anında Dijital Teslimat</span>
       </h1>
     </div>
 
@@ -294,7 +387,6 @@
     </div>
 
     <div id="catGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-5">
-      <!-- category cards injected / static below -->
       <div class="tilt-card reveal card-surface rounded-2xl p-6 cursor-pointer" data-tilt>
         <div class="tilt-inner">
           <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5 bg-[color:var(--neon-blue)]/10 text-[color:var(--neon-blue)]">
@@ -302,7 +394,7 @@
           </div>
           <h3 class="font-semibold text-lg mb-1">Popüler E-Kitaplar</h3>
           <p class="text-sm text-[color:var(--text-mid)] mb-4">En çok okunan dijital kitaplar</p>
-          <span class="font-mono text-xs text-[color:var(--text-low)]">2 ürün →</span>
+          <span class="font-mono text-xs text-[color:var(--text-low)]" id="catCountEbooks">→</span>
         </div>
       </div>
 
@@ -342,7 +434,7 @@
   </div>
 </section>
 
-<!-- ============ E-BOOKS ============ -->
+<!-- ============ E-BOOKS (ARTIK DİNAMİK + REALTIME) ============ -->
 <section id="ebooks" class="relative py-24 px-6 bg-[color:var(--bg-surface)]/40">
   <div class="max-w-7xl mx-auto">
     <div class="reveal mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -353,36 +445,13 @@
       <p class="text-sm text-[color:var(--text-mid)] max-w-sm">Satın al, anında indir — PDF formatında, cihaz sınırı yok.</p>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-      <!-- Book Card: E-Ticaret Rehberi Paket 1 (ücretsiz) -->
-      <article id="product-e-ticaret-rehberi-paket-1" class="reveal card-surface rounded-2xl overflow-hidden group">
-        <div class="h-44 relative flex items-center justify-center bg-gradient-to-br from-[#0d2a3d] to-[#1a1035]">
-          <span class="font-display text-2xl text-white/90 tracking-widest">E-TİCARET</span>
-          <span class="absolute top-3 left-3 font-mono text-[10px] bg-black/40 px-2 py-1 rounded text-[color:var(--neon-blue)]">PDF</span>
-          <span class="absolute top-3 right-12 font-mono text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">ÜCRETSİZ</span>
-          <button class="fav-btn absolute top-3 right-3 text-white/80" data-slug="e-ticaret-rehberi-paket-1" data-product="E-Ticaret Rehberi - Paket 1" aria-label="Favorilere ekle">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 5.5 6 5c2-.3 3.6.8 6 3 2.4-2.2 4-3.3 6-3 3.5.5 5 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
-          </button>
-        </div>
-        <div class="p-5">
-          <h3 class="font-semibold mb-1">E-Ticaret Rehberi - Paket 1</h3>
-          <p class="text-xs text-[color:var(--text-low)] mb-3">CyberShop Ekibi</p>
-          <p class="text-sm text-[color:var(--text-mid)] mb-4 leading-relaxed">Sıfırdan zirveye adım adım e-ticaret kurulumu, dijital pazarlama, tedarik zinciri ve satış stratejilerini anlatan 50 sayfalık kapsamlı rehber.</p>
-          <div class="flex items-center justify-between mb-4">
-            <span class="stars text-sm"><span class="filled">★★★★★</span><span class="text-[color:var(--text-low)] ml-1 font-mono text-xs">5.0 (1)</span></span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="font-mono font-semibold text-lg text-emerald-400">Ücretsiz</span>
-            <!-- DÜZELTME: bu buton önceden "add-cart-btn" idi, bu yüzden tıklanınca
-                 sepete ekleme fonksiyonu (addToCart) çalışıyordu ve ücretsiz kitabın
-                 indirme fonksiyonuna (downloadFreeEbook) hiç ulaşılmıyordu. -->
-            <button class="download-free-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-slug="e-ticaret-rehberi-paket-1" data-product="E-Ticaret Rehberi - Paket 1">Hemen İndir</button>
-          </div>
-        </div>
-      </article>
-
+    <div id="ebooksLoading" class="text-center py-10 text-sm text-[color:var(--text-mid)] font-mono">Yükleniyor...</div>
+    <div id="ebooksEmpty" class="hidden text-center py-10">
+      <p class="text-sm text-[color:var(--text-mid)]">Henüz e-kitap eklenmedi.</p>
     </div>
+
+    <!-- Yeni ürünler buraya JS ile otomatik olarak eklenir -->
+    <div id="ebooksGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
   </div>
 </section>
 
@@ -399,7 +468,6 @@
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- Course 1 -->
       <article id="product-etik-hackerlik" class="reveal card-surface rounded-2xl overflow-hidden">
         <div class="h-40 relative flex items-center justify-center bg-gradient-to-br from-[#0d2a3d] via-[#111a30] to-[#1a1035]">
           <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[color:var(--neon-blue)]"><circle cx="12" cy="12" r="10" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="currentColor" stroke="none"/></svg>
@@ -421,7 +489,6 @@
         </div>
       </article>
 
-      <!-- Course 2 -->
       <article id="product-react-modern-web" class="reveal card-surface rounded-2xl overflow-hidden">
         <div class="h-40 relative flex items-center justify-center bg-gradient-to-br from-[#1a1035] via-[#111a30] to-[#0d2a3d]">
           <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[color:var(--neon-purple)]"><circle cx="12" cy="12" r="10" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="currentColor" stroke="none"/></svg>
@@ -443,7 +510,6 @@
         </div>
       </article>
 
-      <!-- Course 3 -->
       <article id="product-bulut-mimarisi-devops" class="reveal card-surface rounded-2xl overflow-hidden">
         <div class="h-40 relative flex items-center justify-center bg-gradient-to-br from-[#0d2a3d] via-[#111a30] to-[#1a1035]">
           <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[color:var(--neon-blue)]"><circle cx="12" cy="12" r="10" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="currentColor" stroke="none"/></svg>
@@ -759,8 +825,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   // ============ SUPABASE AYARLARI (güvenli init) ============
-  // Bu iki değeri kendi Supabase projenizden alın:
-  // Supabase Dashboard > Project Settings > API
   const SUPABASE_URL = 'https://hohqxtmzbpsgrdjvcroe.supabase.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_XjXpZwOcValdR6i6NdkbZw_C3G869Tu';
 
@@ -781,8 +845,7 @@
   menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
+  // Scroll reveal (dinamik eklenen kartlara da uygulanır, aşağıda observeReveal() ile)
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -791,7 +854,8 @@
       }
     });
   }, { threshold: 0.15 });
-  revealEls.forEach(el => io.observe(el));
+  function observeReveal(el){ io.observe(el); }
+  document.querySelectorAll('.reveal').forEach(observeReveal);
 
   // 3D tilt effect on category cards
   document.querySelectorAll('[data-tilt]').forEach(card => {
@@ -809,7 +873,7 @@
   });
 
   // ============ GİRİŞ / SEPET DURUM YÖNETİMİ (GERÇEK SUPABASE AUTH) ============
-  let currentUser = null; // Supabase auth kullanıcısı
+  let currentUser = null;
   let cartCount = 0;
   let pendingAction = null;
 
@@ -854,13 +918,11 @@
   if (topLoginBtn) topLoginBtn.addEventListener('click', openAuthModal);
   if (topLoginBtnMobile) topLoginBtnMobile.addEventListener('click', () => { mobileMenu.classList.add('hidden'); openAuthModal(); });
 
-  // Kullanıcı adını Supabase user_metadata'sından çıkarır (Google'dan gelen gerçek isim)
   function getDisplayName(user){
     const meta = user.user_metadata || {};
     return meta.full_name || meta.name || (user.email ? user.email.split('@')[0] : 'Kullanıcı');
   }
 
-  // UI'yı gerçek oturum bilgisiyle günceller
   function applySessionToUI(user){
     currentUser = user;
     const loggedIn = !!user;
@@ -888,12 +950,10 @@
   }
 
   if (supabaseClient) {
-    // Sayfa açılışında mevcut oturumu kontrol et (gerçek kullanıcı bilgisiyle)
     supabaseClient.auth.getSession().then(({ data: { session } }) => {
       applySessionToUI(session ? session.user : null);
     });
 
-    // Oturum değişimlerini dinle (giriş / çıkış / token yenileme)
     supabaseClient.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN') {
         applySessionToUI(session.user);
@@ -917,8 +977,6 @@
       options: { redirectTo: window.location.href }
     });
     if (error) showToast('Giriş başarısız: ' + error.message);
-    // Not: OAuth yönlendirmesi sayfayı Google'a taşır, dönüşte
-    // onAuthStateChange (SIGNED_IN) tetiklenir.
   });
 
   async function handleLogout(){
@@ -955,38 +1013,36 @@
     }
   }
 
-  // Ürünleri slug'a göre önbelleğe alır (sepet + favoriler için tekrar sorgu yapmamak adına)
-  const productCache = {};
+  // Ürünleri id/slug'a göre önbelleğe alır
+  const productCache = {};     // slug -> product
+  const productCacheById = {}; // id -> product
+  function cacheProduct(p){
+    if (!p) return;
+    productCache[p.slug] = p;
+    productCacheById[p.id] = p;
+  }
+
   async function getProductBySlug(slug){
     if (productCache[slug]) return productCache[slug];
     if (!supabaseClient) return null;
     const { data, error } = await supabaseClient
       .from('products')
-      .select('id, name, price, slug, file_url')
+      .select('*')
       .eq('slug', slug)
       .single();
     if (error || !data) {
-      // Hata ayıklama için konsola detay basıyoruz — Supabase tarafındaki
-      // gerçek sebebi (RLS, satır yok, vb.) burada görebilirsin.
       console.warn('getProductBySlug hata/veri yok:', slug, error);
       return null;
     }
-    productCache[slug] = data;
+    cacheProduct(data);
     return data;
   }
 
   async function addToCart(slug, productName){
     if (!currentUser || !supabaseClient) return;
-
-    // Ürünü slug'a göre bul
     const product = await getProductBySlug(slug);
+    if (!product) { showToast('Ürün bulunamadı.'); return; }
 
-    if (!product) {
-      showToast('Ürün bulunamadı.');
-      return;
-    }
-
-    // cart_items'a ekle (aynı üründen varsa quantity artır)
     const { data: existing } = await supabaseClient
       .from('cart_items')
       .select('id, quantity')
@@ -1009,19 +1065,6 @@
     loadCartCount();
   }
 
-  document.querySelectorAll('.add-cart-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const slug = btn.getAttribute('data-slug');
-      const productName = btn.getAttribute('data-product');
-      if (!currentUser) {
-        pendingAction = () => addToCart(slug, productName);
-        openAuthModal();
-      } else {
-        addToCart(slug, productName);
-      }
-    });
-  });
-
   // ============ ÜCRETSİZ E-KİTAP İNDİRME (file_url üzerinden) ============
   async function downloadFreeEbook(slug, productName){
     if (!currentUser || !supabaseClient) return;
@@ -1034,18 +1077,20 @@
     showToast('"' + productName + '" indirmen başlıyor.');
   }
 
-  document.querySelectorAll('.download-free-btn').forEach(btn => {
+  // Sepete ekle / ücretsiz indir butonlarına dinleyici bağlar (statik VE dinamik kartlar için ortak)
+  function bindPurchaseButton(btn){
+    if (!btn || btn.dataset.bound === '1') return;
+    btn.dataset.bound = '1';
+    const isFree = btn.classList.contains('download-free-btn');
     btn.addEventListener('click', () => {
       const slug = btn.getAttribute('data-slug');
       const productName = btn.getAttribute('data-product');
-      if (!currentUser) {
-        pendingAction = () => downloadFreeEbook(slug, productName);
-        openAuthModal();
-      } else {
-        downloadFreeEbook(slug, productName);
-      }
+      const action = isFree ? () => downloadFreeEbook(slug, productName) : () => addToCart(slug, productName);
+      if (!currentUser) { pendingAction = action; openAuthModal(); }
+      else { action(); }
     });
-  });
+  }
+  document.querySelectorAll('.add-cart-btn, .download-free-btn').forEach(bindPurchaseButton);
 
   // ============ SEPET MODALI ============
   const cartModal = document.getElementById('cartModal');
@@ -1180,7 +1225,7 @@
     showToast('Ödeme sistemi henüz aktif değil — yakında!');
   });
 
-  // ============ PROFİL MODALI (gerçek kullanıcı verisiyle) ============
+  // ============ PROFİL MODALI ============
   const profileModal = document.getElementById('profileModal');
   const profileOverlay = document.getElementById('profileOverlay');
   const closeProfileBtn = document.getElementById('closeProfileBtn');
@@ -1218,7 +1263,6 @@
   closeProfileBtn.addEventListener('click', closeProfileModal);
   cancelProfileBtn.addEventListener('click', closeProfileModal);
 
-  // İsim değişikliğini Supabase user_metadata'sına kaydeder (gerçek güncelleme)
   saveProfileBtn.addEventListener('click', async () => {
     const newName = profileNameInput.value.trim();
     if (!newName || !currentUser || !supabaseClient) { closeProfileModal(); return; }
@@ -1250,7 +1294,7 @@
   const favoritesEmpty = document.getElementById('favoritesEmpty');
   const favoritesItemsList = document.getElementById('favoritesItemsList');
 
-  let favoriteProductIds = new Set(); // product.id -> favorilenmiş
+  let favoriteProductIds = new Set();
 
   function updateFavBadge(){
     const n = favoriteProductIds.size;
@@ -1282,13 +1326,13 @@
     if (error) { console.error('Favoriler yüklenemedi:', error.message); return; }
 
     favoriteProductIds = new Set((data || []).map(row => row.product_id));
-    (data || []).forEach(row => { if (row.products) productCache[row.products.slug] = row.products; });
+    (data || []).forEach(row => { if (row.products) cacheProduct(row.products); });
 
     updateFavBadge();
     updateFavButtonsUI();
   }
 
-  async function toggleFavorite(slug, productName, btnEl){
+  async function toggleFavorite(slug, productName){
     const product = await getProductBySlug(slug);
     if (!product) { showToast('Ürün bulunamadı.'); return; }
 
@@ -1317,19 +1361,23 @@
     if (!favoritesModal.classList.contains('hidden')) refreshFavoritesModal();
   }
 
-  document.querySelectorAll('.fav-btn').forEach(btn => {
+  // Favori kalp butonlarına dinleyici bağlar (statik VE dinamik kartlar için ortak)
+  function bindFavButton(btn){
+    if (!btn || btn.dataset.bound === '1') return;
+    btn.dataset.bound = '1';
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const slug = btn.getAttribute('data-slug');
       const productName = btn.getAttribute('data-product');
       if (!currentUser) {
-        pendingAction = () => toggleFavorite(slug, productName, btn);
+        pendingAction = () => toggleFavorite(slug, productName);
         openAuthModal();
       } else {
-        toggleFavorite(slug, productName, btn);
+        toggleFavorite(slug, productName);
       }
     });
-  });
+  }
+  document.querySelectorAll('.fav-btn').forEach(bindFavButton);
 
   async function fetchFavoriteDetails(){
     if (!currentUser || !supabaseClient) return [];
@@ -1409,6 +1457,212 @@
   favBtn.addEventListener('click', handleFavEntry);
   if (favBtnMobile) favBtnMobile.addEventListener('click', handleFavEntry);
 
+  // ============ E-KİTAPLAR: DİNAMİK YÜKLEME + REALTIME ============
+  // ÖNEMLİ VARSAYIM: 'products' tablosunda bir 'type' kolonu var
+  // ('ebook' veya 'course' değerini alıyor). Eğer senin tablonda bu
+  // kolon farklı bir isimdeyse (örn. 'category'), aşağıdaki
+  // PRODUCT_TYPE_COLUMN sabitini güncellemen yeterli.
+  const PRODUCT_TYPE_COLUMN = 'type';
+  const EBOOK_TYPE_VALUE = 'ebook';
+
+  const ebooksGrid = document.getElementById('ebooksGrid');
+  const ebooksLoading = document.getElementById('ebooksLoading');
+  const ebooksEmpty = document.getElementById('ebooksEmpty');
+  const catCountEbooks = document.getElementById('catCountEbooks');
+
+  function escapeHtml(str){
+    return String(str ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function starsMarkup(rating, count){
+    const r = Number(rating) || 5;
+    const full = Math.round(r);
+    const stars = '★★★★★'.slice(0, full) || '★';
+    const countLabel = count ? Number(count).toLocaleString('tr-TR') : 'Yeni';
+    return `<span class="stars text-sm"><span class="filled">${stars}</span><span class="text-[color:var(--text-low)] ml-1 font-mono text-xs">${r.toFixed(1)} (${countLabel})</span></span>`;
+  }
+
+  // Tek bir e-kitap ürününden kart HTML'i üretir (mevcut tasarımla birebir uyumlu)
+  function ebookCardMarkup(product){
+    const isFree = !product.price || Number(product.price) === 0;
+    const priceLabel = isFree ? 'Ücretsiz' : formatPrice(product.price);
+    const priceClass = isFree ? 'font-mono font-semibold text-lg text-emerald-400' : 'font-mono font-semibold text-lg';
+    const btnClass = isFree ? 'download-free-btn' : 'add-cart-btn';
+    const btnLabel = isFree ? 'Hemen İndir' : 'Sepete Ekle';
+    const author = product.author || 'CyberShop Ekibi';
+    const desc = product.description || 'Uzman ekibimiz tarafından hazırlanan kapsamlı dijital rehber.';
+    const badge = isFree
+      ? '<span class="absolute top-3 right-12 font-mono text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">ÜCRETSİZ</span>'
+      : '';
+
+    return `
+      <article id="product-${escapeHtml(product.slug)}" class="reveal card-surface rounded-2xl overflow-hidden group">
+        <div class="h-44 relative flex items-center justify-center bg-gradient-to-br from-[#0d2a3d] to-[#1a1035]">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-white/70"><path d="M4 4h11a2 2 0 012 2v13l-7.5-4L4 19V6a2 2 0 012-2z"/></svg>
+          <span class="absolute top-3 left-3 font-mono text-[10px] bg-black/40 px-2 py-1 rounded text-[color:var(--neon-blue)]">PDF</span>
+          ${badge}
+          <button class="fav-btn absolute top-3 right-3 text-white/80" data-slug="${escapeHtml(product.slug)}" data-product="${escapeHtml(product.name)}" aria-label="Favorilere ekle">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 5.5 6 5c2-.3 3.6.8 6 3 2.4-2.2 4-3.3 6-3 3.5.5 5 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
+          </button>
+        </div>
+        <div class="p-5">
+          <h3 class="font-semibold mb-1">${escapeHtml(product.name)}</h3>
+          <p class="text-xs text-[color:var(--text-low)] mb-3">${escapeHtml(author)}</p>
+          <p class="text-sm text-[color:var(--text-mid)] mb-4 leading-relaxed">${escapeHtml(desc)}</p>
+          <div class="flex items-center justify-between mb-4">
+            ${starsMarkup(product.rating, product.rating_count)}
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="${priceClass}">${priceLabel}</span>
+            <button class="${btnClass} glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-slug="${escapeHtml(product.slug)}" data-product="${escapeHtml(product.name)}">${btnLabel}</button>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  // Bir ürün kartını DOM'a ekler (initial yükleme -> append, realtime -> prepend + vurgu)
+  function insertEbookCard(product, { prepend = false } = {}){
+    cacheProduct(product);
+
+    const existing = document.getElementById('product-' + product.slug);
+    if (existing) { existing.remove(); } // aynı slug tekrar gelirse günceller
+
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = ebookCardMarkup(product).trim();
+    const card = wrapper.firstElementChild;
+
+    if (prepend && ebooksGrid.firstChild) {
+      ebooksGrid.insertBefore(card, ebooksGrid.firstChild);
+      card.classList.add('just-added');
+    } else {
+      ebooksGrid.appendChild(card);
+    }
+
+    observeReveal(card);
+    // Realtime ile eklenenler hemen görünür olsun, scroll-reveal'a takılmasın
+    requestAnimationFrame(() => card.classList.add('in'));
+
+    bindFavButton(card.querySelector('.fav-btn'));
+    bindPurchaseButton(card.querySelector('.add-cart-btn, .download-free-btn'));
+
+    // Favorilerdeyse kalp dolu görünsün
+    updateFavButtonsUI();
+
+    // Arama indeksi artık eski, bir sonraki arama açılışında yeniden kurulacak
+    searchIndex = [];
+
+    // Google için Product yapılandırılmış verisini güncelle
+    updateEbookStructuredData();
+
+    return card;
+  }
+
+  // E-kitaplar için Product/ItemList yapılandırılmış verisini (JSON-LD) DOM'daki
+  // güncel karta göre yeniden üretir. Yeni bir e-kitap eklendiğinde veya
+  // realtime güncellemede otomatik çalışır, böylece arama motorları da
+  // güncel ürün listesini görür.
+  function updateEbookStructuredData(){
+    const products = Object.values(productCache).filter(p => p && p[PRODUCT_TYPE_COLUMN] === EBOOK_TYPE_VALUE);
+    if (!products.length) return;
+
+    const itemListElement = products.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Product',
+        name: p.name,
+        description: p.description || 'CyberShop tarafından sunulan dijital e-kitap.',
+        brand: { '@type': 'Brand', name: 'CyberShop' },
+        offers: {
+          '@type': 'Offer',
+          price: String(p.price || 0),
+          priceCurrency: 'TRY',
+          availability: 'https://schema.org/InStock'
+        }
+      }
+    }));
+
+    const jsonLd = { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement };
+
+    let tag = document.getElementById('ld-ebooks');
+    if (!tag) {
+      tag = document.createElement('script');
+      tag.type = 'application/ld+json';
+      tag.id = 'ld-ebooks';
+      document.head.appendChild(tag);
+    }
+    tag.textContent = JSON.stringify(jsonLd);
+  }
+
+  async function loadEbooks(){
+    if (!supabaseClient) {
+      ebooksLoading.classList.add('hidden');
+      ebooksEmpty.classList.remove('hidden');
+      return;
+    }
+    ebooksLoading.classList.remove('hidden');
+    ebooksEmpty.classList.add('hidden');
+
+    const { data, error } = await supabaseClient
+      .from('products')
+      .select('*')
+      .eq(PRODUCT_TYPE_COLUMN, EBOOK_TYPE_VALUE)
+      .order('created_at', { ascending: true });
+
+    ebooksLoading.classList.add('hidden');
+
+    if (error) {
+      console.error('E-kitaplar yüklenemedi:', error);
+      showToast('E-kitaplar yüklenemedi: ' + error.message);
+      ebooksEmpty.classList.remove('hidden');
+      return;
+    }
+
+    if (!data || !data.length) {
+      ebooksEmpty.classList.remove('hidden');
+      if (catCountEbooks) catCountEbooks.textContent = '0 ürün →';
+      return;
+    }
+
+    data.forEach(product => insertEbookCard(product));
+    if (catCountEbooks) catCountEbooks.textContent = data.length + ' ürün →';
+  }
+
+  // Yeni bir 'products' satırı INSERT edilir edilmez (Supabase Studio'dan,
+  // başka bir admin panelinden vs.) kartı anında sayfaya ekler.
+  function subscribeToNewProducts(){
+    if (!supabaseClient) return;
+    supabaseClient
+      .channel('public:products:new-items')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'products' }, (payload) => {
+        const product = payload.new;
+        if (!product || product[PRODUCT_TYPE_COLUMN] !== EBOOK_TYPE_VALUE) return;
+        insertEbookCard(product, { prepend: true });
+        if (catCountEbooks) {
+          const current = parseInt(catCountEbooks.textContent, 10) || 0;
+          catCountEbooks.textContent = (current + 1) + ' ürün →';
+        }
+        showToast('Yeni e-kitap eklendi: "' + product.name + '"');
+      })
+      // Bir e-kitap güncellenirse (fiyat, açıklama vb.) kartı da güncelle
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'products' }, (payload) => {
+        const product = payload.new;
+        if (!product || product[PRODUCT_TYPE_COLUMN] !== EBOOK_TYPE_VALUE) return;
+        insertEbookCard(product);
+      })
+      // Bir e-kitap silinirse kartı kaldır
+      .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'products' }, (payload) => {
+        const oldProduct = payload.old;
+        if (!oldProduct) return;
+        const el = document.getElementById('product-' + oldProduct.slug);
+        if (el) el.remove();
+        searchIndex = [];
+      })
+      .subscribe();
+  }
+
+  loadEbooks().then(subscribeToNewProducts);
+
   // ============ ARAMA (client-side ürün indeksi) ============
   const searchBtn = document.getElementById('searchBtn');
   const searchBtnMobile = document.getElementById('searchBtnMobile');
@@ -1420,7 +1674,6 @@
   const searchEmpty = document.getElementById('searchEmpty');
   const searchHint = document.getElementById('searchHint');
 
-  // Sayfadaki tüm ürünleri (e-kitap + kurs) tek bir indekste toplar
   function buildSearchIndex(){
     const index = [];
     document.querySelectorAll('.add-cart-btn[data-slug], .download-free-btn[data-slug]').forEach(btn => {
