@@ -146,11 +146,12 @@
     </nav>
 
     <div class="hidden md:flex items-center gap-4">
-      <button aria-label="Ara" class="text-[color:var(--text-mid)] hover:text-white transition-colors">
+      <button id="searchBtn" aria-label="Ara" class="text-[color:var(--text-mid)] hover:text-white transition-colors">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3" stroke-linecap="round"/></svg>
       </button>
-      <button aria-label="Favoriler" class="text-[color:var(--text-mid)] hover:text-white transition-colors">
+      <button id="favBtn" aria-label="Favoriler" class="relative text-[color:var(--text-mid)] hover:text-white transition-colors">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 5.5 6 5c2-.3 3.6.8 6 3 2.4-2.2 4-3.3 6-3 3.5.5 5 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
+        <span id="favBadge" class="hidden absolute -top-2 -right-2 w-4 h-4 rounded-full bg-[color:var(--neon-purple)] text-[#0b1220] text-[10px] font-bold flex items-center justify-center">0</span>
       </button>
       <button id="cartBtn" aria-label="Sepet" class="relative text-[color:var(--text-mid)] hover:text-white transition-colors">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.5 3h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L21 8H6"/></svg>
@@ -183,7 +184,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
             Kurslarım
           </a>
-          <a href="#" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm text-[color:var(--text-mid)] hover:text-white hover:bg-white/5 transition-colors">
+          <a href="#" class="favorites-link flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm text-[color:var(--text-mid)] hover:text-white hover:bg-white/5 transition-colors">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 5.5 6 5c2-.3 3.6.8 6 3 2.4-2.2 4-3.3 6-3 3.5.5 5 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
             Favorilerim
           </a>
@@ -202,6 +203,16 @@
   </div>
 
   <div id="mobileMenu" class="hidden md:hidden border-t border-white/5 bg-[#0f172a]/95 px-6 py-4 space-y-3 text-[color:var(--text-mid)] text-sm font-medium">
+    <div class="flex items-center gap-3 pb-1">
+      <button id="searchBtnMobile" class="flex-1 flex items-center gap-2 border border-white/10 rounded-full px-4 py-2 text-[color:var(--text-mid)]">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3" stroke-linecap="round"/></svg>
+        Ara
+      </button>
+      <button id="favBtnMobile" aria-label="Favoriler" class="relative border border-white/10 rounded-full p-2.5 text-[color:var(--text-mid)]">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 5.5 6 5c2-.3 3.6.8 6 3 2.4-2.2 4-3.3 6-3 3.5.5 5 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
+        <span id="favBadgeMobile" class="hidden absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-[color:var(--neon-purple)] text-[#0b1220] text-[10px] font-bold flex items-center justify-center">0</span>
+      </button>
+    </div>
     <a href="#hero" class="block hover:text-white">Ana Sayfa</a>
     <a href="#ebooks" class="block hover:text-white">E-Kitaplar</a>
     <a href="#courses" class="block hover:text-white">Video Kurslar</a>
@@ -217,7 +228,7 @@
         <a href="#" class="profile-link block px-1 py-1.5 hover:text-white">Profilim</a>
         <a href="#" class="block px-1 py-1.5 hover:text-white">Siparişlerim</a>
         <a href="#" class="block px-1 py-1.5 hover:text-white">Kurslarım</a>
-        <a href="#" class="block px-1 py-1.5 hover:text-white">Favorilerim</a>
+        <a href="#" class="favorites-link block px-1 py-1.5 hover:text-white">Favorilerim</a>
         <button id="logoutBtnMobile" class="block w-full text-left px-1 py-1.5 text-red-400">Çıkış</button>
       </div>
     </div>
@@ -759,6 +770,48 @@
   </div>
 </div>
 
+<!-- ============ FAVORITES MODAL ============ -->
+<div id="favoritesModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center px-6 py-10 overflow-y-auto">
+  <div id="favoritesOverlay" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="relative card-surface rounded-2xl p-8 w-full max-w-lg my-auto">
+    <button id="closeFavoritesBtn" aria-label="Kapat" class="absolute top-5 right-5 text-[color:var(--text-mid)] hover:text-white transition-colors">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+    </button>
+
+    <h3 class="font-semibold text-lg mb-6 flex items-center gap-2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="text-[color:var(--neon-purple)]"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 5.5 6 5c2-.3 3.6.8 6 3 2.4-2.2 4-3.3 6-3 3.5.5 5 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
+      Favorilerim
+    </h3>
+
+    <div id="favoritesLoading" class="hidden text-center py-10 text-sm text-[color:var(--text-mid)] font-mono">Yükleniyor...</div>
+
+    <div id="favoritesEmpty" class="hidden text-center py-10">
+      <p class="text-sm text-[color:var(--text-mid)]">Henüz favori ürün eklemedin.</p>
+    </div>
+
+    <div id="favoritesItemsList" class="space-y-4 max-h-[55vh] overflow-y-auto pr-1"></div>
+  </div>
+</div>
+
+<!-- ============ SEARCH MODAL ============ -->
+<div id="searchModal" class="hidden fixed inset-0 z-[100] flex items-start justify-center px-6 pt-24 pb-10 overflow-y-auto">
+  <div id="searchOverlay" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="relative card-surface rounded-2xl p-6 w-full max-w-xl">
+    <div class="flex items-center gap-3 border border-white/10 rounded-xl px-4 py-3 mb-2 bg-[#0b1220]">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="text-[color:var(--text-low)] flex-shrink-0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3" stroke-linecap="round"/></svg>
+      <input id="searchInput" type="text" placeholder="E-kitap veya video kurs ara..." autocomplete="off" class="flex-1 bg-transparent text-sm text-white placeholder-[color:var(--text-low)] focus:outline-none">
+      <button id="closeSearchBtn" aria-label="Kapat" class="text-[color:var(--text-low)] hover:text-white transition-colors flex-shrink-0">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <p id="searchHint" class="font-mono text-[10px] text-[color:var(--text-low)] px-1 mb-3 tracking-widest">TÜM ÜRÜNLERDE ARA</p>
+    <div id="searchResults" class="space-y-2 max-h-[50vh] overflow-y-auto pr-1"></div>
+    <div id="searchEmpty" class="hidden text-center py-10">
+      <p class="text-sm text-[color:var(--text-mid)]">Aramanla eşleşen ürün bulunamadı.</p>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   // ============ SUPABASE AYARLARI (güvenli init) ============
@@ -880,9 +933,13 @@
       if (userNameLabelMobile) userNameLabelMobile.textContent = displayName.toUpperCase();
       fillProfileModal(user);
       loadCartCount();
+      loadFavorites();
     } else {
       cartCount = 0;
       cartBadge.classList.add('hidden');
+      favoriteProductIds.clear();
+      updateFavButtonsUI();
+      updateFavBadge();
     }
   }
 
@@ -954,17 +1011,28 @@
     }
   }
 
+  // Ürünleri slug'a göre önbelleğe alır (sepet + favoriler için tekrar sorgu yapmamak adına)
+  const productCache = {};
+  async function getProductBySlug(slug){
+    if (productCache[slug]) return productCache[slug];
+    if (!supabaseClient) return null;
+    const { data, error } = await supabaseClient
+      .from('products')
+      .select('id, name, price, slug')
+      .eq('slug', slug)
+      .single();
+    if (error || !data) return null;
+    productCache[slug] = data;
+    return data;
+  }
+
   async function addToCart(slug, productName){
     if (!currentUser || !supabaseClient) return;
 
     // Ürünü slug'a göre bul
-    const { data: product, error: productError } = await supabaseClient
-      .from('products')
-      .select('id')
-      .eq('slug', slug)
-      .single();
+    const product = await getProductBySlug(slug);
 
-    if (productError || !product) {
+    if (!product) {
       showToast('Ürün bulunamadı.');
       return;
     }
@@ -1149,6 +1217,7 @@
   const profileDisplayName = document.getElementById('profileDisplayName');
   const profileAvatarInitial = document.getElementById('profileAvatarInitial');
   const profileJoinDate = document.getElementById('profileJoinDate');
+  const statFavorites = document.getElementById('statFavorites');
 
   function fillProfileModal(user){
     const displayName = getDisplayName(user);
@@ -1192,6 +1261,292 @@
     applySessionToUI(data.user);
     closeProfileModal();
     showToast('Profil bilgilerin güncellendi.');
+  });
+
+  // ============ FAVORİLER (favorites tablosuna bağlı) ============
+  const favBtn = document.getElementById('favBtn');
+  const favBtnMobile = document.getElementById('favBtnMobile');
+  const favBadge = document.getElementById('favBadge');
+  const favBadgeMobile = document.getElementById('favBadgeMobile');
+
+  const favoritesModal = document.getElementById('favoritesModal');
+  const favoritesOverlay = document.getElementById('favoritesOverlay');
+  const closeFavoritesBtn = document.getElementById('closeFavoritesBtn');
+  const favoritesLoading = document.getElementById('favoritesLoading');
+  const favoritesEmpty = document.getElementById('favoritesEmpty');
+  const favoritesItemsList = document.getElementById('favoritesItemsList');
+
+  let favoriteProductIds = new Set(); // product.id -> favorilenmiş
+
+  function updateFavBadge(){
+    const n = favoriteProductIds.size;
+    [favBadge, favBadgeMobile].forEach(el => {
+      if (!el) return;
+      el.textContent = n;
+      el.classList.toggle('hidden', n === 0);
+    });
+    if (statFavorites) statFavorites.textContent = n;
+  }
+
+  function updateFavButtonsUI(){
+    document.querySelectorAll('.fav-btn').forEach(btn => {
+      const slug = btn.getAttribute('data-slug');
+      const cached = productCache[slug];
+      const isFav = cached && favoriteProductIds.has(cached.id);
+      btn.classList.toggle('is-fav', !!isFav);
+      const svg = btn.querySelector('svg');
+      if (svg) svg.setAttribute('fill', isFav ? 'currentColor' : 'none');
+    });
+  }
+
+  async function loadFavorites(){
+    if (!currentUser || !supabaseClient) return;
+    const { data, error } = await supabaseClient
+      .from('favorites')
+      .select('product_id, products ( id, name, slug, price )')
+      .eq('user_id', currentUser.id);
+    if (error) { console.error('Favoriler yüklenemedi:', error.message); return; }
+
+    favoriteProductIds = new Set((data || []).map(row => row.product_id));
+    (data || []).forEach(row => { if (row.products) productCache[row.products.slug] = row.products; });
+
+    updateFavBadge();
+    updateFavButtonsUI();
+  }
+
+  async function toggleFavorite(slug, productName, btnEl){
+    const product = await getProductBySlug(slug);
+    if (!product) { showToast('Ürün bulunamadı.'); return; }
+
+    const alreadyFav = favoriteProductIds.has(product.id);
+
+    if (alreadyFav) {
+      const { error } = await supabaseClient
+        .from('favorites')
+        .delete()
+        .eq('user_id', currentUser.id)
+        .eq('product_id', product.id);
+      if (error) { showToast('Kaldırılamadı: ' + error.message); return; }
+      favoriteProductIds.delete(product.id);
+      showToast('"' + productName + '" favorilerden kaldırıldı.');
+    } else {
+      const { error } = await supabaseClient
+        .from('favorites')
+        .insert({ user_id: currentUser.id, product_id: product.id });
+      if (error) { showToast('Eklenemedi: ' + error.message); return; }
+      favoriteProductIds.add(product.id);
+      showToast('"' + productName + '" favorilere eklendi.');
+    }
+
+    updateFavBadge();
+    updateFavButtonsUI();
+    if (!favoritesModal.classList.contains('hidden')) refreshFavoritesModal();
+  }
+
+  document.querySelectorAll('.fav-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const slug = btn.getAttribute('data-slug');
+      const productName = btn.getAttribute('data-product');
+      if (!currentUser) {
+        pendingAction = () => toggleFavorite(slug, productName, btn);
+        openAuthModal();
+      } else {
+        toggleFavorite(slug, productName, btn);
+      }
+    });
+  });
+
+  async function fetchFavoriteDetails(){
+    if (!currentUser || !supabaseClient) return [];
+    const { data, error } = await supabaseClient
+      .from('favorites')
+      .select('id, product_id, products ( id, name, slug, price )')
+      .eq('user_id', currentUser.id)
+      .order('created_at', { ascending: true });
+    if (error) {
+      showToast('Favoriler yüklenemedi: ' + error.message);
+      return [];
+    }
+    return data || [];
+  }
+
+  function renderFavoriteItems(items){
+    favoritesItemsList.innerHTML = '';
+    if (!items.length) {
+      favoritesEmpty.classList.remove('hidden');
+      return;
+    }
+    favoritesEmpty.classList.add('hidden');
+
+    items.forEach(item => {
+      const product = item.products;
+      if (!product) return;
+
+      const row = document.createElement('div');
+      row.className = 'flex items-center gap-4 card-surface rounded-xl p-4';
+      row.innerHTML = `
+        <div class="flex-1 min-w-0">
+          <p class="font-semibold text-sm truncate">${product.name}</p>
+          <p class="font-mono text-xs text-[color:var(--text-low)] mt-1">${formatPrice(product.price)}</p>
+        </div>
+        <button class="fav-add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full flex-shrink-0" data-slug="${product.slug}" data-product="${product.name}">Sepete Ekle</button>
+        <button class="fav-remove-btn text-[color:var(--text-low)] hover:text-red-400 transition-colors flex-shrink-0" data-slug="${product.slug}" data-product="${product.name}" aria-label="Favorilerden kaldır">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 5.5 6 5c2-.3 3.6.8 6 3 2.4-2.2 4-3.3 6-3 3.5.5 5 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
+        </button>
+      `;
+      favoritesItemsList.appendChild(row);
+    });
+
+    favoritesItemsList.querySelectorAll('.fav-add-cart-btn').forEach(btn => {
+      btn.addEventListener('click', () => addToCart(btn.getAttribute('data-slug'), btn.getAttribute('data-product')));
+    });
+    favoritesItemsList.querySelectorAll('.fav-remove-btn').forEach(btn => {
+      btn.addEventListener('click', () => toggleFavorite(btn.getAttribute('data-slug'), btn.getAttribute('data-product')).then(refreshFavoritesModal));
+    });
+  }
+
+  async function refreshFavoritesModal(){
+    favoritesLoading.classList.remove('hidden');
+    favoritesItemsList.innerHTML = '';
+    favoritesEmpty.classList.add('hidden');
+
+    const items = await fetchFavoriteDetails();
+    favoritesLoading.classList.add('hidden');
+    renderFavoriteItems(items);
+  }
+
+  function openFavoritesModal(){
+    accountDropdown.classList.add('hidden');
+    accountChevron.style.transform = '';
+    mobileMenu.classList.add('hidden');
+    favoritesModal.classList.remove('hidden');
+    refreshFavoritesModal();
+  }
+  function closeFavoritesModal(){ favoritesModal.classList.add('hidden'); }
+
+  favoritesOverlay.addEventListener('click', closeFavoritesModal);
+  closeFavoritesBtn.addEventListener('click', closeFavoritesModal);
+
+  function handleFavEntry(){
+    if (!currentUser) { pendingAction = openFavoritesModal; openAuthModal(); return; }
+    openFavoritesModal();
+  }
+  favBtn.addEventListener('click', handleFavEntry);
+  if (favBtnMobile) favBtnMobile.addEventListener('click', handleFavEntry);
+  document.querySelectorAll('.favorites-link').forEach(el => {
+    el.addEventListener('click', (e) => { e.preventDefault(); handleFavEntry(); });
+  });
+
+  // ============ ARAMA (client-side ürün indeksi) ============
+  const searchBtn = document.getElementById('searchBtn');
+  const searchBtnMobile = document.getElementById('searchBtnMobile');
+  const searchModal = document.getElementById('searchModal');
+  const searchOverlay = document.getElementById('searchOverlay');
+  const closeSearchBtn = document.getElementById('closeSearchBtn');
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  const searchEmpty = document.getElementById('searchEmpty');
+  const searchHint = document.getElementById('searchHint');
+
+  // Sayfadaki tüm ürünleri (e-kitap + kurs) tek bir indekste toplar
+  function buildSearchIndex(){
+    const index = [];
+    document.querySelectorAll('.add-cart-btn[data-slug]').forEach(btn => {
+      const article = btn.closest('article');
+      if (!article) return;
+      const slug = btn.getAttribute('data-slug');
+      const name = btn.getAttribute('data-product') || '';
+      const author = article.querySelector('p.text-xs.text-\\[color\\:var\\(--text-low\\)\\]');
+      const desc = article.querySelector('p.text-sm.text-\\[color\\:var\\(--text-mid\\)\\]');
+      const priceEl = article.querySelector('.font-mono.font-semibold.text-lg');
+      const section = article.closest('section');
+      const category = section && section.id === 'courses' ? 'Video Kurs' : 'E-Kitap';
+      index.push({
+        slug,
+        name,
+        author: author ? author.textContent.trim() : '',
+        desc: desc ? desc.textContent.trim() : '',
+        price: priceEl ? priceEl.textContent.trim() : '',
+        category,
+        articleId: 'product-' + slug
+      });
+    });
+    return index;
+  }
+  let searchIndex = [];
+
+  function renderSearchResults(list){
+    searchResults.innerHTML = '';
+    if (!list.length) {
+      searchEmpty.classList.remove('hidden');
+      return;
+    }
+    searchEmpty.classList.add('hidden');
+
+    list.forEach(item => {
+      const row = document.createElement('button');
+      row.type = 'button';
+      row.className = 'w-full text-left flex items-center gap-4 card-surface rounded-xl p-4 hover:border-[color:var(--neon-blue)]/40 transition-colors';
+      row.innerHTML = `
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="font-mono text-[9px] px-1.5 py-0.5 rounded ${item.category === 'Video Kurs' ? 'bg-[color:var(--neon-purple)]/15 text-[color:var(--neon-purple)]' : 'bg-[color:var(--neon-blue)]/15 text-[color:var(--neon-blue)]'}">${item.category.toUpperCase()}</span>
+          </div>
+          <p class="font-semibold text-sm truncate">${item.name}</p>
+          <p class="text-xs text-[color:var(--text-low)] truncate mt-0.5">${item.author}</p>
+        </div>
+        <span class="font-mono font-semibold text-sm flex-shrink-0">${item.price}</span>
+      `;
+      row.addEventListener('click', () => goToSearchResult(item));
+      searchResults.appendChild(row);
+    });
+  }
+
+  function goToSearchResult(item){
+    closeSearchModal();
+    const el = document.getElementById(item.articleId);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    el.style.transition = 'box-shadow .3s ease, border-color .3s ease';
+    el.style.boxShadow = '0 0 0 2px var(--neon-blue), 0 0 30px rgba(34,226,255,.35)';
+    setTimeout(() => { el.style.boxShadow = ''; }, 1800);
+  }
+
+  function runSearch(query){
+    const q = query.trim().toLocaleLowerCase('tr-TR');
+    if (!q) {
+      searchHint.textContent = 'TÜM ÜRÜNLERDE ARA';
+      renderSearchResults(searchIndex);
+      return;
+    }
+    searchHint.textContent = `SONUÇLAR: "${query.trim()}"`;
+    const filtered = searchIndex.filter(item =>
+      item.name.toLocaleLowerCase('tr-TR').includes(q) ||
+      item.author.toLocaleLowerCase('tr-TR').includes(q) ||
+      item.desc.toLocaleLowerCase('tr-TR').includes(q) ||
+      item.category.toLocaleLowerCase('tr-TR').includes(q)
+    );
+    renderSearchResults(filtered);
+  }
+
+  function openSearchModal(){
+    mobileMenu.classList.add('hidden');
+    if (!searchIndex.length) searchIndex = buildSearchIndex();
+    searchModal.classList.remove('hidden');
+    searchInput.value = '';
+    runSearch('');
+    setTimeout(() => searchInput.focus(), 50);
+  }
+  function closeSearchModal(){ searchModal.classList.add('hidden'); }
+
+  searchBtn.addEventListener('click', openSearchModal);
+  if (searchBtnMobile) searchBtnMobile.addEventListener('click', openSearchModal);
+  searchOverlay.addEventListener('click', closeSearchModal);
+  closeSearchBtn.addEventListener('click', closeSearchModal);
+  searchInput.addEventListener('input', (e) => runSearch(e.target.value));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !searchModal.classList.contains('hidden')) closeSearchModal();
   });
 </script>
 
