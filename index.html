@@ -374,7 +374,10 @@
           </div>
           <div class="flex items-center justify-between">
             <span class="font-mono font-semibold text-lg text-emerald-400">Ücretsiz</span>
-            <button class="add-cart-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-slug="e-ticaret-rehberi-paket-1" data-product="E-Ticaret Rehberi - Paket 1">Hemen İndir</button>
+            <!-- DÜZELTME: bu buton önceden "add-cart-btn" idi, bu yüzden tıklanınca
+                 sepete ekleme fonksiyonu (addToCart) çalışıyordu ve ücretsiz kitabın
+                 indirme fonksiyonuna (downloadFreeEbook) hiç ulaşılmıyordu. -->
+            <button class="download-free-btn glow-btn text-[#0b1220] text-xs font-semibold px-4 py-2 rounded-full" data-slug="e-ticaret-rehberi-paket-1" data-product="E-Ticaret Rehberi - Paket 1">Hemen İndir</button>
           </div>
         </div>
       </article>
@@ -962,7 +965,12 @@
       .select('id, name, price, slug, file_url')
       .eq('slug', slug)
       .single();
-    if (error || !data) return null;
+    if (error || !data) {
+      // Hata ayıklama için konsola detay basıyoruz — Supabase tarafındaki
+      // gerçek sebebi (RLS, satır yok, vb.) burada görebilirsin.
+      console.warn('getProductBySlug hata/veri yok:', slug, error);
+      return null;
+    }
     productCache[slug] = data;
     return data;
   }
