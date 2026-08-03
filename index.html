@@ -728,6 +728,37 @@
   </div>
 </div>
 
+<!-- ============ CART MODAL ============ -->
+<div id="cartModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center px-6 py-10 overflow-y-auto">
+  <div id="cartOverlay" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="relative card-surface rounded-2xl p-8 w-full max-w-lg my-auto">
+    <button id="closeCartBtn" aria-label="Kapat" class="absolute top-5 right-5 text-[color:var(--text-mid)] hover:text-white transition-colors">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+    </button>
+
+    <h3 class="font-semibold text-lg mb-6 flex items-center gap-2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="text-[color:var(--neon-blue)]"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.5 3h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L21 8H6"/></svg>
+      Sepetim
+    </h3>
+
+    <div id="cartLoading" class="hidden text-center py-10 text-sm text-[color:var(--text-mid)] font-mono">Yükleniyor...</div>
+
+    <div id="cartEmpty" class="hidden text-center py-10">
+      <p class="text-sm text-[color:var(--text-mid)]">Sepetin şu an boş.</p>
+    </div>
+
+    <div id="cartItemsList" class="space-y-4 max-h-[45vh] overflow-y-auto pr-1"></div>
+
+    <div id="cartFooter" class="hidden mt-6 pt-5 border-t border-white/10">
+      <div class="flex items-center justify-between mb-5">
+        <span class="text-sm text-[color:var(--text-mid)]">Toplam</span>
+        <span id="cartTotal" class="font-mono font-semibold text-xl">₺0</span>
+      </div>
+      <button id="checkoutBtn" class="w-full glow-btn text-[#0b1220] text-sm font-semibold px-6 py-3 rounded-full">Ödemeye Geç</button>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   // ============ SUPABASE AYARLARI (güvenli init) ============
@@ -972,6 +1003,139 @@
         addToCart(slug, productName);
       }
     });
+  });
+
+  // ============ SEPET MODALI ============
+  const cartModal = document.getElementById('cartModal');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+  const cartLoading = document.getElementById('cartLoading');
+  const cartEmpty = document.getElementById('cartEmpty');
+  const cartItemsList = document.getElementById('cartItemsList');
+  const cartFooter = document.getElementById('cartFooter');
+  const cartTotal = document.getElementById('cartTotal');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+
+  function formatPrice(n){ return '₺' + Number(n).toLocaleString('tr-TR'); }
+
+  async function fetchCartDetails(){
+    if (!currentUser || !supabaseClient) return [];
+    const { data, error } = await supabaseClient
+      .from('cart_items')
+      .select('id, quantity, products ( id, name, slug, price )')
+      .eq('user_id', currentUser.id)
+      .order('created_at', { ascending: true });
+    if (error) {
+      showToast('Sepet yüklenemedi: ' + error.message);
+      return [];
+    }
+    return data || [];
+  }
+
+  function renderCartItems(items){
+    cartItemsList.innerHTML = '';
+    if (!items.length) {
+      cartEmpty.classList.remove('hidden');
+      cartFooter.classList.add('hidden');
+      return;
+    }
+    cartEmpty.classList.add('hidden');
+    cartFooter.classList.remove('hidden');
+
+    let total = 0;
+    items.forEach(item => {
+      const product = item.products;
+      if (!product) return;
+      const lineTotal = product.price * item.quantity;
+      total += lineTotal;
+
+      const row = document.createElement('div');
+      row.className = 'flex items-center gap-4 card-surface rounded-xl p-4';
+      row.innerHTML = `
+        <div class="flex-1 min-w-0">
+          <p class="font-semibold text-sm truncate">${product.name}</p>
+          <p class="font-mono text-xs text-[color:var(--text-low)] mt-1">${formatPrice(product.price)} / adet</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="qty-btn w-7 h-7 rounded-full border border-white/15 hover:border-[color:var(--neon-blue)]/60 text-sm flex items-center justify-center" data-action="dec" data-id="${item.id}">−</button>
+          <span class="w-6 text-center text-sm font-mono">${item.quantity}</span>
+          <button class="qty-btn w-7 h-7 rounded-full border border-white/15 hover:border-[color:var(--neon-blue)]/60 text-sm flex items-center justify-center" data-action="inc" data-id="${item.id}">+</button>
+        </div>
+        <button class="remove-btn text-[color:var(--text-low)] hover:text-red-400 transition-colors flex-shrink-0" data-id="${item.id}" aria-label="Kaldır">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0l-1 14a2 2 0 01-2 2H7a2 2 0 01-2-2L4 6h16z"/></svg>
+        </button>
+      `;
+      cartItemsList.appendChild(row);
+    });
+
+    cartTotal.textContent = formatPrice(total);
+
+    cartItemsList.querySelectorAll('.qty-btn').forEach(btn => {
+      btn.addEventListener('click', () => handleQtyChange(btn.getAttribute('data-id'), btn.getAttribute('data-action'), items));
+    });
+    cartItemsList.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', () => handleRemoveItem(btn.getAttribute('data-id')));
+    });
+  }
+
+  async function handleQtyChange(itemId, action, items){
+    const item = items.find(i => String(i.id) === String(itemId));
+    if (!item) return;
+    const newQty = action === 'inc' ? item.quantity + 1 : item.quantity - 1;
+
+    if (newQty <= 0) {
+      await handleRemoveItem(itemId);
+      return;
+    }
+
+    const { error } = await supabaseClient
+      .from('cart_items')
+      .update({ quantity: newQty })
+      .eq('id', itemId);
+
+    if (error) { showToast('Güncellenemedi: ' + error.message); return; }
+    await refreshCartModal();
+    loadCartCount();
+  }
+
+  async function handleRemoveItem(itemId){
+    const { error } = await supabaseClient
+      .from('cart_items')
+      .delete()
+      .eq('id', itemId);
+
+    if (error) { showToast('Silinemedi: ' + error.message); return; }
+    await refreshCartModal();
+    loadCartCount();
+  }
+
+  async function refreshCartModal(){
+    cartLoading.classList.remove('hidden');
+    cartItemsList.innerHTML = '';
+    cartEmpty.classList.add('hidden');
+    cartFooter.classList.add('hidden');
+
+    const items = await fetchCartDetails();
+    cartLoading.classList.add('hidden');
+    renderCartItems(items);
+  }
+
+  function openCartModal(){
+    cartModal.classList.remove('hidden');
+    refreshCartModal();
+  }
+  function closeCartModal(){ cartModal.classList.add('hidden'); }
+
+  cartOverlay.addEventListener('click', closeCartModal);
+  closeCartBtn.addEventListener('click', closeCartModal);
+
+  document.getElementById('cartBtn').addEventListener('click', () => {
+    if (!currentUser) { openAuthModal(); return; }
+    openCartModal();
+  });
+
+  checkoutBtn.addEventListener('click', () => {
+    showToast('Ödeme sistemi henüz aktif değil — yakında!');
   });
 
   // ============ PROFİL MODALI (gerçek kullanıcı verisiyle) ============
