@@ -159,7 +159,7 @@
 
       <!-- Misafir durumu -->
       <div id="guestActions">
-        <a href="#courses" class="glow-btn text-[#0b1220] text-sm font-semibold px-5 py-2.5 rounded-full">Alışverişe Başla</a>
+        <button id="topLoginBtn" class="glow-btn text-[#0b1220] text-sm font-semibold px-5 py-2.5 rounded-full">Giriş Yap</button>
       </div>
 
       <!-- Üye durumu -->
@@ -210,7 +210,7 @@
 
     <div class="pt-3 mt-2 border-t border-white/10">
       <div id="guestActionsMobile">
-        <a href="#courses" class="block glow-btn text-[#0b1220] text-sm font-semibold px-5 py-2.5 rounded-full text-center">Alışverişe Başla</a>
+        <button id="topLoginBtnMobile" class="block w-full glow-btn text-[#0b1220] text-sm font-semibold px-5 py-2.5 rounded-full text-center">Giriş Yap</button>
       </div>
       <div id="userActionsMobile" class="hidden space-y-1">
         <p id="userNameLabelMobile" class="text-[10px] text-[color:var(--text-low)] font-mono px-1 mb-2 tracking-widest">KULLANICI</p>
@@ -820,6 +820,11 @@
 
   authOverlay.addEventListener('click', closeAuthModal);
   cancelAuthBtn.addEventListener('click', closeAuthModal);
+
+  const topLoginBtn = document.getElementById('topLoginBtn');
+  const topLoginBtnMobile = document.getElementById('topLoginBtnMobile');
+  if (topLoginBtn) topLoginBtn.addEventListener('click', openAuthModal);
+  if (topLoginBtnMobile) topLoginBtnMobile.addEventListener('click', () => { mobileMenu.classList.add('hidden'); openAuthModal(); });
 
   // Kullanıcı adını Supabase user_metadata'sından çıkarır (Google'dan gelen gerçek isim)
   function getDisplayName(user){
